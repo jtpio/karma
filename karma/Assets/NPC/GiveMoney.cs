@@ -5,27 +5,28 @@ public class GiveMoney : MonoBehaviour {
 	
 	public float dist;
 
-	Transform _transform;
+	Transform t;
 	Transform player;
 	MoneyCounter moneyCounter;
 	bool hasMoney;
 	Transform[] children;
-	Transform money;
+	public Transform money;
 
 	void Start () {
 		player = GameObject.Find("Player").transform;
 		moneyCounter = player.GetComponent<MoneyCounter>();
-		_transform = transform;
+		t = transform;
 		hasMoney = true;
-		money = transform.FindChild("Money");
+		//money = transform.Find("Suitcase");
 	}
 
 	void Update () {
-		if (hasMoney && Vector3.Distance(player.position, _transform.position) < dist) {
+		if (hasMoney && Vector3.Distance(player.position, t.position) < dist) {
 			if(Input.GetMouseButtonDown(0)){
 				Destroy(money.gameObject);
 				hasMoney = false;
 				moneyCounter.incMoney();
+				GetComponent<NavMeshAgent>().speed += 3.0f;
 			}
 		}
 	}

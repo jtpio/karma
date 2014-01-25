@@ -12,7 +12,7 @@ public class StockMarket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		guiTexture.pixelInset = new Rect(0, 0, Mathf.Min(256, (int)newX), 116);
+		guiTexture.pixelInset = new Rect(Screen.width-256, Screen.height-116, Mathf.Min(256, (int)newX), 116);
 		newX += Time.deltaTime;
 	}
 }
