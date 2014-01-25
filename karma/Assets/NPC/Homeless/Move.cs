@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class buiildingRotate : MonoBehaviour {
+public class Move : MonoBehaviour {
+
+	public Transform target;
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(Vector3.up);
+		GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
 	}
+
 }
