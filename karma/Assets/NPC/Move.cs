@@ -36,4 +36,8 @@ public class Move : MonoBehaviour {
 		agent.SetDestination(target.position);
 	}
 
+	public void SetSpeed(float speed) {
+		agent.speed = speed;
+	}
+
 }
