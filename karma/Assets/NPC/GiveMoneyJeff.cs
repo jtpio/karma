@@ -5,7 +5,8 @@ public class GiveMoneyJeff : MonoBehaviour {
 	
 	public float dist;
 	public Transform money;
-
+	public AudioSource coinSound;
+	
 	Transform _transform;
 	Transform player;
 	MoneyCounter moneyCounter;
@@ -13,6 +14,8 @@ public class GiveMoneyJeff : MonoBehaviour {
 	Transform[] children;
 
 	void Start () {
+		AudioSource[] sources = GetComponents<AudioSource>();
+		coinSound = sources[0];
 		player = GameObject.Find("Player").transform;
 		moneyCounter = player.GetComponent<MoneyCounter>();
 		_transform = transform;
@@ -25,6 +28,7 @@ public class GiveMoneyJeff : MonoBehaviour {
 				Destroy(money.gameObject);
 				hasMoney = false;
 				moneyCounter.incMoney();
+				coinSound.Play();
 			}
 		}
 	}
