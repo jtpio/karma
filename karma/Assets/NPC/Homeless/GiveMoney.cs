@@ -22,9 +22,11 @@ public class GiveMoney : MonoBehaviour {
 
 	void Update () {
 		if (hasMoney && Vector3.Distance(player.position, _transform.position) < dist) {
-			Destroy(money.gameObject);
-			hasMoney = false;
-			moneyCounter.incMoney();
+			if(Input.GetMouseButtonDown(0)){
+				Destroy(money.gameObject);
+				hasMoney = false;
+				moneyCounter.incMoney();
+			}
 		}
 	}
 

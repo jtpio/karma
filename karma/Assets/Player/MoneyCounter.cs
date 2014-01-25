@@ -33,7 +33,7 @@ public class MoneyCounter : MonoBehaviour {
 
 	public void OnGUI() {
 		style.fontSize = (lost) ? 42 + (int) (Mathf.Cos(Time.time * 10) * 10) : 42;
-		GUI.Label(new Rect(0, 0, 150, 100), 
+		GUI.Label(new Rect(5, 0, 150, 100), 
 			"" + money, 
 			style
 		);
