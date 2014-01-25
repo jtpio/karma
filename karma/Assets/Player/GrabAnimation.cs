@@ -13,7 +13,7 @@ public class GrabAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetMouseButtonDown(0)){
-			animation.Play("grab");
+			animation.Play("Grab");
 		}
 	}
 }
