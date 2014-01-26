@@ -13,8 +13,11 @@ public class GiveMoneyHobo : MonoBehaviour {
 	Transform money1;
 	Transform money2;
 	Transform money3;
+	AudioSource hoboSound;
 
 	void Start () {
+		AudioSource[] sources = GetComponents<AudioSource>();
+		hoboSound = sources[0];
 		player = GameObject.Find("Player").transform;
 		moneyCounter = player.GetComponent<MoneyCounter>();
 		_transform = transform;
@@ -32,6 +35,7 @@ public class GiveMoneyHobo : MonoBehaviour {
 				Destroy(money3.gameObject);
 				hasMoney = false;
 				moneyCounter.incMoney();
+				hoboSound.Stop();
 			}
 		}
 	}
