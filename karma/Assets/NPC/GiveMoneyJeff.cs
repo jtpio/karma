@@ -11,6 +11,7 @@ public class GiveMoneyJeff : MonoBehaviour {
 	Transform player;
 	MoneyCounter moneyCounter;
 	bool hasMoney;
+	bool hasConfidence;
 	Transform[] children;
 	Transform model;
 	Move move;
@@ -24,6 +25,7 @@ public class GiveMoneyJeff : MonoBehaviour {
 		moneyCounter = player.GetComponent<MoneyCounter>();
 		_transform = transform;
 		hasMoney = true;
+		hasConfidence = true;
 	}
 
 	void Update () {
@@ -37,6 +39,14 @@ public class GiveMoneyJeff : MonoBehaviour {
 				move.SetSpeed(8.0f);
 
 			}
+		}
+
+		if (hasConfidence && !hasMoney && Vector3.Distance(player.position, _transform.position) < dist) {
+			if(Input.GetMouseButtonDown(1)) {
+				hasConfidence = false;
+				moneyCounter.incBonus();
+			}
+			
 		}
 	}
 

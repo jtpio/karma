@@ -11,6 +11,7 @@ public class GiveMoneyHobo : MonoBehaviour {
 	Transform model;
 	MoneyCounter moneyCounter;
 	bool hasMoney;
+	bool hasConfidence;
 	Transform[] children;
 	Move move;
 	
@@ -27,6 +28,7 @@ public class GiveMoneyHobo : MonoBehaviour {
 		moneyCounter = player.GetComponent<MoneyCounter>();
 		_transform = transform;
 		hasMoney = true;
+		hasConfidence = true;
 	}
 
 	void Update () {
@@ -39,6 +41,13 @@ public class GiveMoneyHobo : MonoBehaviour {
 				model.animation.Play("Die");
 				hoboCry.Play();
 				move.SetTarget(null);
+			}
+		}
+	
+		if (hasConfidence && !hasMoney && Vector3.Distance(player.position, _transform.position) < dist) {
+			if(Input.GetMouseButtonDown(1)) {
+				hasConfidence = false;
+				moneyCounter.incBonus();
 			}
 		}
 	}

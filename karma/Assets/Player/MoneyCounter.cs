@@ -7,6 +7,7 @@ public class MoneyCounter : MonoBehaviour {
 	public int moneyEnd;
 	public int realMoneyEnd;
 	public int endTime;
+	public int superEndTime;
 	public string lostText;
 	public string goalString;
 	public GUIStyle style;
@@ -73,6 +74,7 @@ public class MoneyCounter : MonoBehaviour {
 				realMoneyEnd = money / 3;
 			}
 			state = State.LOSING;
+			Camera.main.GetComponent<NoiseEffect>().enabled = true;
 		}
 
 		if (state == State.LOSING) {
@@ -80,6 +82,8 @@ public class MoneyCounter : MonoBehaviour {
 		}
 
 		if (time > endTime) state = State.LOST;
+
+		if (time > superEndTime) Application.LoadLevel(0);
 	}
 
 	void RaiseGain(float v) {
@@ -88,6 +92,15 @@ public class MoneyCounter : MonoBehaviour {
 
 	void GainUpStop() {
 		iTween.ValueTo(gameObject, htGotMoneyOut);
+	}
+
+	public void incBonus() {
+		gain = Random.Range(0, 10000);
+		if (state == State.COLLECT) {
+			money += gain;
+		}
+		StopTweens();
+		iTween.ValueTo(gameObject, htGotMoneyIn);
 	}
 
 	public void incMoney() {
@@ -140,7 +153,7 @@ public class MoneyCounter : MonoBehaviour {
 			}
 		} else if (state == State.LOSING) {
 			var d2 = style.CalcSize(new GUIContent(lostText));
-			GUI.Label(new Rect(Screen.width / 2 - d2.x / 2, Screen.height / 2 - d2.y, 300, 300), lostText, lostStyle);
+			GUI.Label(new Rect(Screen.width / 2 - d2.x / 2, Screen.height / 3, 300, 300), lostText, lostStyle);
 		}
 	}
 }

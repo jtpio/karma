@@ -9,7 +9,7 @@ public class Spawn : MonoBehaviour {
 
 	void Start () {
 		List<Transform> ts = new List<Transform>();
-		foreach (Transform t in transform) ts.Add(t);
+		foreach (Transform t in transform) if (t != transform) ts.Add(t);
 
 		foreach(Transform t in ts) {
 			for (int i = 0; i < 1 + (Random.Range(0, 8) == 1 ? 1 : 0); i++) {

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CameraPath : MonoBehaviour {
 
-	bool loaded = false;
 
 	void Start () {
 		//StartCoroutine("Load");
@@ -11,9 +10,8 @@ public class CameraPath : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.anyKey){// && loaded) {
+		if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.KeypadEnter) ) {// && loaded) {
 			iTween.Stop();
-			loaded = false;
 			iTween.MoveBy(gameObject, iTween.Hash("z", 40, "easeType", "easeInQuad", "onComplete", "OnComplete", "time", 0.2));
 		}
 	}
@@ -26,10 +24,4 @@ public class CameraPath : MonoBehaviour {
 		Application.LoadLevel(1);
 	}
 
-	IEnumerator Load() {
-		AsyncOperation async = Application.LoadLevelAsync(1);
-		yield return async;
-		loaded = true;
-		Debug.Log("Loading complete");
-	}
 }
