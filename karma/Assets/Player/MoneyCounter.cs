@@ -13,7 +13,10 @@ public class MoneyCounter : MonoBehaviour {
 	public GUIStyle moneyGainStyle;
 	public GUIStyle lostStyle;
 	public GUIStyle goalStyle;
-	
+
+	public static float time;
+	public static float END_TIME;
+
 	Hashtable htGotMoneyIn;
 	Hashtable htGotMoneyOut;
 
@@ -21,7 +24,6 @@ public class MoneyCounter : MonoBehaviour {
 	int moneyOffset = 1000000;
 	int gain = 0;
 	float gotMoneyY = -70.0f;
-	public static float time;
 
 	int money;
 	public enum State{
@@ -29,8 +31,13 @@ public class MoneyCounter : MonoBehaviour {
 	}
 	public static State state;
 
+	void Awake () {
+		END_TIME = endTime;
+	}
+
 	void Start () {
 		time = 0;
+
 		money = moneyStart;
 		moneyEnd += moneyOffset;
 		state = State.COLLECT;
@@ -133,7 +140,7 @@ public class MoneyCounter : MonoBehaviour {
 			}
 		} else if (state == State.LOSING) {
 			var d2 = style.CalcSize(new GUIContent(lostText));
-			GUI.Label(new Rect(Screen.width / 2 - d2.x / 2, Screen.height / 2 - d2.y / 2, 300, 300), lostText, lostStyle);
+			GUI.Label(new Rect(Screen.width / 2 - d2.x / 2, Screen.height / 2 - d2.y, 300, 300), lostText, lostStyle);
 		}
 	}
 }

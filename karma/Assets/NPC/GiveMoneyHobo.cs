@@ -13,8 +13,7 @@ public class GiveMoneyHobo : MonoBehaviour {
 	bool hasMoney;
 	Transform[] children;
 	Move move;
-
-
+	
 	AudioSource hoboSound;
 	AudioSource hoboCry;
 

@@ -12,7 +12,7 @@ public class Spawn : MonoBehaviour {
 		foreach (Transform t in transform) ts.Add(t);
 
 		foreach(Transform t in ts) {
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 1 + (Random.Range(0, 8) == 1 ? 1 : 0); i++) {
 				Transform tr = Instantiate(prefab, t.position, Quaternion.identity) as Transform;
 				tr.GetComponent<Move>().SetWayPoints(ts);
 				tr.GetComponent<Move>().SetTarget(t);

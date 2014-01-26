@@ -15,5 +15,9 @@ public class Config : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Escape)) {
 			Screen.lockCursor = false;
 		}
+
+		if (Input.GetKey(KeyCode.Q)) {
+			Application.Quit();
+		}
 	}
 }

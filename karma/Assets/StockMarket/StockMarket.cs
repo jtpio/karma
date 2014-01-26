@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class StockMarket : MonoBehaviour {
-
-	public float endTime;
+	
 	float newX = 0;
 	float step;
 
@@ -11,7 +10,7 @@ public class StockMarket : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		step = 256.0f / endTime;
+		step = 256.0f / MoneyCounter.END_TIME;
 	}
 	
 	// Update is called once per frame
