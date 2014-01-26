@@ -19,7 +19,7 @@ public class CatsAndDogs : MonoBehaviour {
 
 	void Update () {
 		if (MoneyCounter.state == MoneyCounter.State.LOSING || MoneyCounter.state == MoneyCounter.State.LOST) {
-			if (Random.Range(0, 4) == 1) {
+			if (Random.Range(0, 8) == 1) {
 				Transform t = Instantiate(cat, new Vector3(Random.Range(pos1.x, pos2.x), 100, Random.Range(pos1.z, pos2.z)), Quaternion.identity) as Transform;
 				t.gameObject.AddComponent<Rigidbody>(); t.GetComponent<Rigidbody>().mass = 45;
 				Transform t2 = Instantiate(dog, new Vector3(Random.Range(pos1.x, pos2.x), 100, Random.Range(pos1.z, pos2.z)), Quaternion.identity) as Transform;

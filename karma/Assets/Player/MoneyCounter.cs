@@ -125,10 +125,10 @@ public class MoneyCounter : MonoBehaviour {
 
 	public void OnGUI() {
 
-		GUI.Label(new Rect(10, 10, 150, 100),  goalString, goalStyle);
+		GUI.Label(new Rect(10, 10, 150, 100), goalString, goalStyle);
 
 		var d = style.CalcSize(new GUIContent(goalString));
-		GUI.Label(new Rect(10, 10 + d.y + 10, 150, 100), formatMoney(money), style);
+		GUI.Label(new Rect(10, 10 + d.y + 10, 150, 100), "You have " + formatMoney(money), style);
 
 		string text = "+ " + formatMoney(gain);
 		var dim = style.CalcSize(new GUIContent(text));
