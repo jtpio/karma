@@ -4,38 +4,42 @@ using System.Collections;
 public class GiveMoneyHobo : MonoBehaviour {
 	
 	public float dist;
+	public Transform money;
 
 	Transform _transform;
 	Transform player;
+	Transform model;
 	MoneyCounter moneyCounter;
 	bool hasMoney;
 	Transform[] children;
-	Transform money1;
-	Transform money2;
-	Transform money3;
+	Move move;
+
+
 	AudioSource hoboSound;
+	AudioSource hoboCry;
 
 	void Start () {
 		AudioSource[] sources = GetComponents<AudioSource>();
 		hoboSound = sources[0];
+		hoboCry = sources[1];
 		player = GameObject.Find("Player").transform;
+		model = transform.FindChild("char_hobo");
+		move = GetComponent<Move>();
 		moneyCounter = player.GetComponent<MoneyCounter>();
 		_transform = transform;
 		hasMoney = true;
-		money1 = transform.FindChild("polySurface7");
-		money2 = transform.FindChild("polySurface8");
-		money3 = transform.FindChild("polySurface9");
 	}
 
 	void Update () {
 		if (hasMoney && Vector3.Distance(player.position, _transform.position) < dist) {
 			if(Input.GetMouseButtonDown(0)){
-				Destroy(money1.gameObject);
-				Destroy(money2.gameObject);
-				Destroy(money3.gameObject);
+				Destroy(money.gameObject);
 				hasMoney = false;
 				moneyCounter.incMoney();
 				hoboSound.Stop();
+				model.animation.Play("Die");
+				hoboCry.Play();
+				move.SetTarget(null);
 			}
 		}
 	}

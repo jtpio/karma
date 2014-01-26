@@ -19,7 +19,7 @@ public class Move : MonoBehaviour {
 	void Start () {
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (target != null && Vector3.Distance(target.position, t.position) < wayPointDist) {
@@ -33,7 +33,8 @@ public class Move : MonoBehaviour {
 
 	public void SetTarget(Transform tr) {
 		target = tr;
-		agent.SetDestination(target.position);
+		agent.Stop();
+		if (target != null)	agent.SetDestination(target.position);
 	}
 
 	public void SetSpeed(float speed) {
