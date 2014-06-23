@@ -20,3 +20,8 @@ Good stuff + bad stuff + time pressure = weird things, be prepared
 Special thanks to:
 * Torsten Hansson for the Font
 * Patrik Martinsson for the Music
+
+# License
+
+Licensed under Creative Commons: By Attribution-NonCommercial 3.0 Unported.
+http://creativecommons.org/licenses/by-nc/3.0/
